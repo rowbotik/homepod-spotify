@@ -2,21 +2,14 @@ version: '3.8'
 
 services:
   raspotify:
-    image: dtcooper/raspotify:latest
+    image: derkades/raspotify:latest
     container_name: raspotify
     restart: unless-stopped
+    network_mode: host
     environment:
-      - DEVICE_NAME=${DEVICE_NAME:-HomePod Spotify}
-      - BITRATE=${BITRATE:-320}
-      - BACKEND_NAME=pipe
-      - DEVICE=/tmp/spotify_fifo
-      - INITIAL_VOLUME=100
-    volumes:
-      - ~/homepod-spotify/pipe:/tmp
+      - SPOTIFY_NAME=${DEVICE_NAME:-HomePod Spotify}
     devices:
-      - /dev/null:/dev/null  # Dummy device since we use pipe output
-    networks:
-      - spotify-bridge
+      - /dev/snd:/dev/snd
     logging:
       driver: "json-file"
       options:
