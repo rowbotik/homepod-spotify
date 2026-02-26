@@ -1,0 +1,10 @@
+# Ignore environment files with actual secrets/credentials
+.env
+
+# Docker volumes (these are created at runtime)
+pipe/
+config/
+
+# System files
+.DS_Store
+*.log
