@@ -24,7 +24,7 @@ services:
         max-file: "3"
 
   owntone:
-    image: owntone/owntone-server:latest
+    image: lscr.io/linuxserver/daapd:latest
     container_name: owntone
     restart: unless-stopped
     network_mode: host
